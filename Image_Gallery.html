@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image_gallery</title>
+    <style>
+       #imid {
+      max-width: 80%;
+      height: auto;
+      margin: 20px auto;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    #imid:hover {
+      transform: scale(1.1); /* scales the image up by 10% */
+      cursor: pointer;
+      box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.5); /* adds a white glow effect */
+    }
+    @media (max-width: 768px) {
+      #imid {
+        max-width: 90%;
+      }
+    }
+
+  </style>
+
+
+    <script>
+        let currentIndex= 0;
+        const images=["image1.jpeg","image2.jpg","image3.jpeg","image4.jpg","image6.jpeg","image5.jpeg"];
+        function showImage(index){
+            const imgele=document.getElementById("imid");
+            imgele.src=images[index];
+        }
+        function previousImage(){
+            currentIndex--;
+            if(currentIndex<0){
+                currentIndex=images.length-1;
+            }
+            showImage(currentIndex);
+        }
+        function nextImage(){
+            currentIndex++;
+            if(currentIndex>images.length-1){
+                currentIndex=0;
+            }
+            showImage(currentIndex);
+        }
+    </script>
+</head>
+<body style="background-color: rgb(28, 28, 28);">
+    <h1 style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; background-color: aliceblue;"  >IMAGE GALLERY
+    </h1>
+    <div style="text-align: center;">
+    <img src="image1.jpeg" id="imid" height="300px" width="500px">
+</div>
+<div style="text-align: center;">
+    <br>
+    <button onclick="previousImage()" style="background-color: bisque; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Previous</button>
+    <button onclick="nextImage()" style="background-color: bisque; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Next</button>
+</div>
+    
+</body>
+</html>
